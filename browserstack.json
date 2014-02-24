@@ -3,6 +3,7 @@
   "key": "--secure--",
   "test_path": "js/tests/index.html",
   "debug": true,
+  "build": "RahulNew",
   "browsers": [
     {
       "browser": "firefox",
