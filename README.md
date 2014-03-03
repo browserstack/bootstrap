@@ -172,12 +172,3 @@ For more information on SemVer, please visit <http://semver.org/>.
 ## Copyright and license
 
 Code and documentation copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](LICENSE). Docs released under [Creative Commons](docs/LICENSE).
-Test Mon Mar  3 18:15:13 IST 2014
-Test Mon Mar  3 18:15:20 IST 2014
-Test Mon Mar  3 18:15:30 IST 2014
-Test Mon Mar  3 18:15:37 IST 2014
-Test Mon Mar  3 18:21:57 IST 2014
-Test Mon Mar  3 18:22:09 IST 2014
-Test Mon Mar  3 18:22:16 IST 2014
-Test Mon Mar  3 18:22:23 IST 2014
-Test Mon Mar  3 18:22:32 IST 2014
