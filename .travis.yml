@@ -16,14 +16,8 @@ env:
   global:
     - JEKYLL_VERSION: 1.4.1
     - SAUCE_USERNAME: bootstrap
-    - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
-    - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
-    - secure: "Gghh/e3Gsbj1+4RR9Lh2aR/xJl35HWiHqlPIeSUqE9D7uDCVTAwNce/dGL3Ew7uJPfJ6Pgr70wD3zgu3stw0Zmzayax0hiDtGwcQCxVIER08wqGANK9C2Q7PYJkNTNtiTo6ehKWbdV4Z+/U+TEYyQfpQTDbAFYk/vVpsdjp0Lmc="
-    - secure: "RTbRdx4G/2OTLfrZtP1VbRljxEmd6A1F3GqXboeQTldsnAlwpsES65es5CE3ub/rmixLApOY9ot7OPmNixFgC2Y8xOsV7lNCC62QVpmqQEDyGFFQKb3yO6/dmwQxdsCqGfzf9Np6Wh5V22QFvr50ZLKLd7Uhd9oXMDIk/z1MJ3o="
-    - secure: "Besg41eyU+2mfxrywQ4ydOShMdc34ImaO0S0ENP+aCOBuyNBIgP59wy5tBMmyai2/8eInYeVps4Td96mWInMMxzTe3Bar7eTLG5tWVKRSr/wc4NBPZ/ppoPAmCEsz9Y+VptRH9/FO8n7hsL9EFZ+xBKbG+C0SccGoyBDpA5j7/w="
-    - secure: "Ptiv7phCImFP3ALIz+sMQzrZg8k7C1gLZbFBhWxjnQr3g06wIfX3Ls5y9OHvxid+lOZZjISui3wzBVgpVHqwHUYf96+r0mo6/mJ+F4ffUmShZANVaIMD/JRTnXhUQJbvntGLvxn1EYWPdNM+2IHJrMipnjHxU9tkgAnlel4Zdew="
-    - secure: "dwvF08SVKw5nO9ckP6rG0LWoWPtBLuDH7II2dKbWFU+m38zID10AcqocCFFtFj6NXb4U8JCp4mENiUK1Qh7emeVq8kEk9lA7IXdhBlCPz73ICa3YXKi/6KEYH27syCrTcEPRJZu6ub20xwTBA5H3Q7zZcnZeEnbYLoJV8/x0Bws="
-    - secure: "eM8d8gKSjAEipbAlKWtuo9vjXPQHbhCPpvogWAHUZlaHjGue+BOn6qBMqQwsGi8Bfish3AuLKd7DxBZCYxaVwnZhQlfeHIT8j97tQS1ojqFuqGHU7K3sDHCIoWE3g7KmC9oa3IegFAy8OPhysBei1P9kyQD8U5WOyTVlsyx48Dg="
+    - secure: "B1VGQ+65cNzvENxHSf4R5tHtjCb0FkdOyAYr3VNMMZBLXuLKu4501bPrXqHDlo0xyZfuLiUxu6DloTCa5FgGde9EpuuzMz5RSiH6g4mg9t+kayIpTO1rITFb4yQYsfRlXnDaJy1HafYQ5+Lfs1rNxeQuSYltvHvIZ4nRs9JOCc0="
+    - secure: "LzktwWC9OrvnDjVQiGyWU06aCRMOL25wxnj9PP6JzBWRCjONNwKxbOBe4nlBUjJMWxaa6UViYmYIk7LqNGE5iiFESFaibrz/GoT/lbYlSfsePFbeGi4NYOvbkJJ0D3k45WEZmbrF/Wz4WjE4lowYrRm7YnEj3AJwXAuWk3jDiQU="
   matrix:
     - TWBS_TEST=browserstack-js-unit
 matrix:
