@@ -5,10 +5,9 @@
   "debug": true,
   "build": "RahulNew",
   "browsers": [
-    "firefox_current",
+    "firefox_previous",
     "safari_current",
-    "chrome_current",
-    "opera_current",
+    "chrome_previous",
     {
       "browser": "Mobile Safari",
       "os": "ios",
