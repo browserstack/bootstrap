@@ -15,8 +15,13 @@ lead: "Bring Bootstrap's components to life with over a dozen custom jQuery plug
   <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
 
   <div class="bs-callout bs-callout-danger">
-    <h4>Do not attempt to include both.</h4>
-    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file.</p>
+    <h4>Using the compiled JavaScript</h4>
+    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+  </div>
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Component data attributes</h4>
+    <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger">
@@ -60,7 +65,7 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Boot
 {% endhighlight %}
 
   <h3 id="js-events">Events</h3>
-  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+  <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is triggered on the completion of an action.</p>
   <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
   <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 {% highlight js %}
@@ -226,24 +231,28 @@ $('#myModal').on('show.bs.modal', function (e) {
 </div>
 {% endhighlight %}
 
-
   <div class="bs-callout bs-callout-warning">
     <h4>Make modals accessible</h4>
     <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
   </div>
 
+  <div class="bs-callout bs-callout-info">
+    <h4>Embedding YouTube videos</h4>
+    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
+  </div>
+
   <h2 id="modals-sizes">Optional sizes</h2>
   <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
   <div class="bs-example">
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
   </div>
 {% highlight html %}
 <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-lg">Large modal</button>
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
-<div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       ...
@@ -252,9 +261,9 @@ $('#myModal').on('show.bs.modal', function (e) {
 </div>
 
 <!-- Small modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-modal-sm">Small modal</button>
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
-<div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       ...
@@ -264,7 +273,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 {% endhighlight %}
 
   <!--  Modal content for the above example -->
-  <div class="modal fade bs-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
@@ -278,7 +287,7 @@ $('#myModal').on('show.bs.modal', function (e) {
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-  <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
@@ -293,6 +302,13 @@ $('#myModal').on('show.bs.modal', function (e) {
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
+  <h2 id="modals-remove-animation">Remove animation</h2>
+  <p>For modals that simply appear rather than fade in to view, remove the <code>.fade</code> class from your modal markup.</p>
+{% highlight html %}
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  ...
+</div>
+{% endhighlight %}
 
   <h2 id="modals-usage">Usage</h2>
   <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
@@ -342,7 +358,7 @@ $('#myModal').on('show.bs.modal', function (e) {
          <td>remote</td>
          <td>path</td>
          <td>false</td>
-         <td><p>If a remote URL is provided, <strong>content will be loaded one time</strong> via jQuery's <code>load</code> method and injected into the root of the modal element. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
+         <td><p>If a remote URL is provided, <strong>content will be loaded one time</strong> via jQuery's <code>load</code> method and injected into the <code>.modal-content</code> div. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
 {% endhighlight %}
@@ -430,7 +446,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
     <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -438,7 +454,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
           </button>
           <a class="navbar-brand" href="#">Project Name</a>
         </div>
-        <div class="collapse navbar-collapse bs-js-navbar-collapse">
+        <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -548,6 +564,10 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 {% highlight js %}
 $('.dropdown-toggle').dropdown()
 {% endhighlight %}
+  <div class="bs-callout bs-callout-info">
+    <h4><code>data-toggle="dropdown"</code> still required</h4>
+    <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-toggle="dropdown"</code> is always required to be present on the dropdown's trigger element.</p>
+  </div>
 
   <h3>Options</h3>
   <p><em>None</em></p>
@@ -557,6 +577,7 @@ $('.dropdown-toggle').dropdown()
   <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
 
   <h3>Events</h3>
+  <p>All dropdown events are fired at the <code>.dropdown-menu</code>'s parent element.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -604,7 +625,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
     <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -612,7 +633,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
           </button>
           <a class="navbar-brand" href="#">Project Name</a>
         </div>
-        <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+        <div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
           <ul class="nav navbar-nav">
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
@@ -648,8 +669,16 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 
   <h2 id="scrollspy-usage">Usage</h2>
 
+  <h3>Requires relative positioning</h3>
+  <p>No matter the implementation method, scrollspy requires the use of <code>position: absolute;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
+
   <h3>Via data attributes</h3>
   <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
+{% highlight css %}
+body {
+  position: relative;
+}
+{% endhighlight %}
 {% highlight html %}
 <body data-spy="scroll" data-target=".navbar-example">
   ...
@@ -663,7 +692,7 @@ $('#myDropdown').on('show.bs.dropdown', function () {
 {% endhighlight %}
 
   <h3>Via JavaScript</h3>
-  <p>Call the scrollspy via JavaScript:</p>
+  <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 {% highlight js %}
 $('body').scrollspy({ target: '.navbar-example' })
 {% endhighlight %}
@@ -941,12 +970,12 @@ $('#example').tooltip(options)
   </div>
 {% highlight html linenos %}
 <!-- HTML to write -->
-<a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
+<a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
 <!-- Generated markup by the plugin -->
 <div class="tooltip top">
   <div class="tooltip-inner">
-    Tooltip!
+    Some tooltip text!
   </div>
   <div class="tooltip-arrow"></div>
 </div>
@@ -1084,6 +1113,8 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 {% endhighlight %}
 </div>
 
+
+
 <!-- Popovers
 ================================================== -->
 <div class="bs-docs-section">
@@ -1150,8 +1181,11 @@ $('#myTooltip').on('hidden.bs.tooltip', function () {
 
   <h3>Live demo</h3>
   <div class="bs-example" style="padding-bottom: 24px;">
-    <a href="#" class="btn btn-lg btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" role="button">Click to toggle popover</a>
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+{% endhighlight %}
 
   <h4>Four directions</h4>
   <div class="bs-example tooltip-demo">
@@ -1187,6 +1221,20 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on right
 </button>
+{% endhighlight %}
+
+  <h4>Dismiss on next click</h4>
+  <p>Use the <code>focus</code> trigger to dismiss popovers on their next click.</p>
+  <div class="bs-example" style="padding-bottom: 24px;">
+    <button type="button" class="btn btn-lg btn-danger bs-docs-popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+  </div>
+{% highlight html %}
+<button type="button" class="btn btn-lg btn-danger popover-dismiss" data-toggle="popover" title="Dimissmisable popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissable popover</button>
+{% endhighlight %}
+{% highlight js %}
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning">
@@ -1434,10 +1482,10 @@ $('#my-alert').bind('closed.bs.alert', function () {
 </button>
 <script>
   $('#loading-example-btn').click(function () {
-    var btn = $(this);
-    btn.button('loading');
+    var btn = $(this)
+    btn.button('loading')
     $.ajax(...).always(function () {
-      btn.button('reset');
+      btn.button('reset')
     });
   });
 </script>
@@ -1542,10 +1590,10 @@ $('.btn').button()
 <button id="loading-example-btn" type="button" class="btn btn-primary" data-loading-text="loading stuff...">...</button>
 <script>
   $('#loading-example-btn').click(function () {
-    var btn = $(this);
-    btn.button('loading');
+    var btn = $(this)
+    btn.button('loading')
     $.ajax(...).always(function () {
-      btn.button('reset');
+      btn.button('reset')
     });
   });
 </script>
@@ -1923,6 +1971,9 @@ $('#myCollapsible').on('hidden.bs.collapse', function () {
 
   <h2 id="carousel-usage">Usage</h2>
 
+  <h3>Multiple carousels</h3>
+  <p>Carousels require the use of an <code>id</code> on the outermost container, <code>.carousel</code>, for carousel controls to function properly. When adding multiple carousels, or when changing a carousel's <code>id</code>, be sure to update the relevant controls.</p>
+
   <h3>Via data attributes</h3>
   <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to its current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which shifts the slide position to a particular index beginning with <code>0</code>.</p>
   <p>The <code>data-ride="carousel"</code> attribute is used to mark a carousel as animating starting at page load.</p>
@@ -2031,7 +2082,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   <h1 id="affix" class="page-header">Affix <small>affix.js</small></h1>
 
   <h2 id="affix-examples">Example</h2>
-  <p>The subnavigation on the left is a live demo of the affix plugin.</p>
+  <p>The subnavigation on the right is a live demo of the affix plugin.</p>
 
   <hr class="bs-docs-separator">
 
@@ -2060,11 +2111,11 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   <h3>Via JavaScript</h3>
   <p>Call the affix plugin via JavaScript:</p>
 {% highlight js %}
-  $('#myAffix').affix({
+  $('#my-affix').affix({
     offset: {
       top: 100
     , bottom: function () {
-        return (this.bottom = $('.bs-footer').outerHeight(true))
+        return (this.bottom = $('.footer').outerHeight(true))
       }
     }
   })
