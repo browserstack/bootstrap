@@ -30,7 +30,7 @@
     "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
   },
   "devDependencies": {
-    "browserstack-runner": "git://github.com/browserstack/browserstack-runner.git#config_parser",
+    "browserstack-runner": "git://github.com/browserstack/browserstack-runner.git#master",
     "btoa": "~1.1.1",
     "canonical-json": "~0.0.4",
     "css-flip": "~0.3.0",
